@@ -5,6 +5,7 @@ set -e
 
 printf "\033[0;32mDeploying updates to tangzhongham...\033[0m\n"
 
+git config --local user.email 'Tangzhongham@gmail.com'
 
 # push your files to github
 msg="saving file and rebuilding site $(date)"
