@@ -43,3 +43,6 @@ done?:
 
 1011
 今天看了ss实现，未来可以发力？
+
+1013
+still working on ss-rust... successfully set up debug env in vscode.
