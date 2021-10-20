@@ -13,3 +13,13 @@ A collection of what I've learned
 -[ ] SQL
 -[ ] 算法
 -[ ] python
+
+## TODOs
+
+### Kafka
+
+- add java code 
+
+### Flink
+
+done nothing yet... 💔 
