@@ -13,8 +13,12 @@ A collection of what I've learned
 -[ ] SQL
 -[ ] 算法
 -[ ] python
+-[x] sqoop
+
 
 ## TODOs
+
+add some 跳转连接
 
 ### Kafka
 
