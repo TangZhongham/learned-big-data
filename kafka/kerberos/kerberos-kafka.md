@@ -1,8 +1,8 @@
 # Kerberos-Kafka
 
-This is a conclusion of how-to-use kafka shells with Kerberos.
+This is a conclusion of how-to-use kafka scripts with Kerberos.
 
-I tested these shells under Kafka 2.3.0
+I tested these scripts under Kafka 2.3.0.
 
 ## Preparation
 
