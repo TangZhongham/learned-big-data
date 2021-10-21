@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/flink/pom.xml" />
         <option value="$PROJECT_DIR$/SQL/pom.xml" />
         <option value="$PROJECT_DIR$/JDBC/pom.xml" />
+        <option value="$PROJECT_DIR$/HDFS/pom.xml" />
       </list>
     </option>
   </component>

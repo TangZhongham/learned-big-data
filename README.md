@@ -27,3 +27,9 @@ add some 跳转连接
 ### Flink
 
 done nothing yet... 💔 
+
+### HDFS
+
+- beautify HDFS sample code...
+- add HDFS simple code instead of thread pool and kerberos
+- add HDFS bins...
