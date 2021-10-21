@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/kafka/kafka-code/MultithreadKafkaProducer/lib/kafka-clients-0.9.0-kafka-2.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/kafka/kafka-code/MultithreadKafkaProducer/lib/argparse4j-0.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/kafka/kafka-code/MultithreadKafkaProducer/lib/slf4j-simple-1.6.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/kafka/kafka-code/MultithreadKafkaProducer/lib/slf4j-api-1.6.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/kafka/kafka-code/MultithreadKafkaProducer/lib/lz4-1.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
