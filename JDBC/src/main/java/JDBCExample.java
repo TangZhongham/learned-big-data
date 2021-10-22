@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class JDBCExample {
 
-//    public static Connection conn;
+    //    public static Connection conn;
     public static File file;
     public static ResultSet rs;
     public static Statement stmt;
@@ -36,6 +36,8 @@ public class JDBCExample {
             // connect
             stmt = conn.createStatement();
 
+//            PreparedStatement ps = conn.prepareStatement("select * from tsadf;");
+
             // Start to query
             if (props.containsKey("query")) {
                 String query = props.getProperty("query");
@@ -46,16 +48,25 @@ public class JDBCExample {
                 rs = stmt.executeQuery("select * from system.dual;");
             }
 
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int size = rsmd.getColumnCount();
-            while(rs.next()) {
-                StringBuffer value = new StringBuffer();
-                for(int i = 0; i < size; i++) {
-                    value.append(rs.getString(i+1)).append("\t");
-                }
-                System.out.println(value.toString());
+            if (rs != null) {
+
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int size = rsmd.getColumnCount();
+                while(rs.next()) {
+                    StringBuffer value = new StringBuffer();
+                    for(int i = 0; i < size; i++) {
+                        value.append(rs.getString(i+1)).append("\t");
+                    }
+                    System.out.println(value.toString());
+                } }
+        }
+        catch (SQLException ex) {
+            System.err.println(new java.util.Date()+" : "+ex.getMessage());
+        }
+        finally {
+            if (rs != null) {
+                rs.close();
             }
-        } finally {
             stmt.close();
             conn.close();
         }
