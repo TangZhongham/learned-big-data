@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/SQL/pom.xml" />
         <option value="$PROJECT_DIR$/JDBC/pom.xml" />
         <option value="$PROJECT_DIR$/HDFS/pom.xml" />
+        <option value="$PROJECT_DIR$/HBase/pom.xml" />
       </list>
     </option>
   </component>

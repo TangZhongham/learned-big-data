@@ -1,0 +1,11 @@
+---
+oauth2:
+  server:
+    baseUrls: ["https://linux-4-35:8383/federation-server", "https://linux-4-36:8383/federation-server"]
+    endpoint:
+      validation: "/TDH/oauth/check_token"
+      authCode: "/TDH/oauth/authorize"
+      token: "/TDH/oauth/token"
+      logout: "/logout"
+  client:
+    credentialFile: "/Users/tangmoumou/java_projects/kerberoslogin/client-credential.jks"

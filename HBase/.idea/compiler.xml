@@ -6,11 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="flink" />
-        <module name="transwarp_jdbc" />
-        <module name="SQL" />
         <module name="hyperbase-demo" />
-        <module name="kerberoslogin" />
       </profile>
     </annotationProcessing>
   </component>
