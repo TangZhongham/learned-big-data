@@ -44,6 +44,11 @@ https://github.com/TurboWay/bigdata_analyse
 
 done nothing yet... 💔 
 
+- add some kafka java api...
+- still need some SQL？
+- CDC testing...
+- Kafka with Kerberos example
+
 ### HDFS
 
 - beautify HDFS sample code...
