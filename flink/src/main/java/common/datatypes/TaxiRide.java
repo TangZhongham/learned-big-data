@@ -18,8 +18,8 @@
 
 package common.datatypes;
 
-import org.apache.flink.training.exercises.common.utils.DataGenerator;
-import org.apache.flink.training.exercises.common.utils.GeoUtils;
+import common.utils.DataGenerator;
+import common.utils.GeoUtils;
 
 import javax.annotation.Nullable;
 import java.io.Serializable;
@@ -125,7 +125,7 @@ public class TaxiRide implements Comparable<TaxiRide>, Serializable {
 	 *     <li>putting START events before END events if they have the same timestamp</li>
 	 * </ul>
 	 */
-	public int compareTo(@Nullable org.apache.flink.training.exercises.common.datatypes.TaxiRide other) {
+	public int compareTo(@Nullable common.datatypes.TaxiRide other) {
 		if (other == null) {
 			return 1;
 		}
@@ -150,8 +150,8 @@ public class TaxiRide implements Comparable<TaxiRide>, Serializable {
 
 	@Override
 	public boolean equals(Object other) {
-		return other instanceof org.apache.flink.training.exercises.common.datatypes.TaxiRide &&
-				this.rideId == ((org.apache.flink.training.exercises.common.datatypes.TaxiRide) other).rideId;
+		return other instanceof common.datatypes.TaxiRide &&
+				this.rideId == ((common.datatypes.TaxiRide) other).rideId;
 	}
 
 	@Override

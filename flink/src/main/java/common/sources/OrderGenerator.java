@@ -2,7 +2,7 @@ package common.sources;
 
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.api.watermark.Watermark;
-import org.apache.flink.training.tzh.common.datatypes.Order;
+import common.datatypes.Order;
 
 import java.util.ArrayList;
 import java.util.List;

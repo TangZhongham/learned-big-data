@@ -8,11 +8,11 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.co.BroadcastProcessFunction;
-import org.apache.flink.training.exercises.common.utils.ExerciseBase;
-import org.apache.flink.training.tzh.common.datatypes.Goods;
-import org.apache.flink.training.tzh.common.datatypes.Order;
-import org.apache.flink.training.tzh.common.sources.GoodsGenerator;
-import org.apache.flink.training.tzh.common.sources.OrderGenerator;
+import common.utils.ExerciseBase;
+import common.datatypes.Goods;
+import common.datatypes.Order;
+import common.sources.GoodsGenerator;
+import common.sources.OrderGenerator;
 import org.apache.flink.util.Collector;
 
 import java.util.Objects;
@@ -47,7 +47,7 @@ public class dimensionBroadcast {
                 .connect(goods.broadcast(GOODS_STATE))
                 .process(new BroadcastProcessFunction<Order, Goods, String>() {
                     @Override
-                    public void processElement(Order order, BroadcastProcessFunction.ReadOnlyContext ctx, Collector<String> out) throws Exception {
+                    public void processElement(Order order, ReadOnlyContext ctx, Collector<String> out) throws Exception {
                         ReadOnlyBroadcastState<Integer, String> broadcastState = ctx.getBroadcastState(GOODS_STATE);
 
                         String goodsName = broadcastState.get((int) order.getGoodsId());
@@ -57,7 +57,7 @@ public class dimensionBroadcast {
                     }
 
                     @Override
-                    public void processBroadcastElement(Goods value, BroadcastProcessFunction.Context ctx, Collector<String> out) throws Exception {
+                    public void processBroadcastElement(Goods value, Context ctx, Collector<String> out) throws Exception {
                         BroadcastState<Integer, String> broadcastState = ctx.getBroadcastState(GOODS_STATE);
 
                         broadcastState.put((int) value.getGoodsId(), value.getGoodsName());

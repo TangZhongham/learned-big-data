@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package common;
+package common.utils;
 
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;

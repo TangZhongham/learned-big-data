@@ -18,7 +18,7 @@
 
 package common.datatypes;
 
-import org.apache.flink.training.exercises.common.utils.DataGenerator;
+import common.utils.DataGenerator;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -102,8 +102,8 @@ public class TaxiFare implements Serializable {
 	@Override
 	public boolean equals(Object other) {
 		// 重写了比较方法，只需要比较 ride id；这里用Object 是因为不知道是啥，可能传任何过来，所以 return 里面通过 instanceof 去判断
-		return other instanceof org.apache.flink.training.exercises.common.datatypes.TaxiFare &&
-				this.rideId == ((org.apache.flink.training.exercises.common.datatypes.TaxiFare) other).rideId;
+		return other instanceof common.datatypes.TaxiFare &&
+				this.rideId == ((common.datatypes.TaxiFare) other).rideId;
 	}
 
 	@Override
@@ -119,7 +119,7 @@ public class TaxiFare implements Serializable {
 	}
 
 	public static void main(String[] args) {
-		org.apache.flink.training.exercises.common.datatypes.TaxiFare taxiFare = new org.apache.flink.training.exercises.common.datatypes.TaxiFare();
+		common.datatypes.TaxiFare taxiFare = new common.datatypes.TaxiFare();
 
 		System.out.println(taxiFare.hashCode());
 		System.out.println(taxiFare.rideId);

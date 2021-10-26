@@ -1,7 +1,7 @@
 package common.datatypes;
 
 import lombok.Data;
-import org.apache.flink.training.tzh.common.sources.DataGenerator;
+import common.sources.DataGenerator;
 
 import java.time.Instant;
 

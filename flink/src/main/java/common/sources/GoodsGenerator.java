@@ -1,7 +1,7 @@
 package common.sources;
 
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
-import org.apache.flink.training.tzh.common.datatypes.Goods;
+import common.datatypes.Goods;
 
 import java.util.ArrayList;
 import java.util.List;

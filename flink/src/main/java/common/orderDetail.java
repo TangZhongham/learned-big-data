@@ -10,11 +10,11 @@ import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.co.RichCoFlatMapFunction;
-import org.apache.flink.training.exercises.common.utils.ExerciseBase;
-import org.apache.flink.training.tzh.common.datatypes.Goods;
-import org.apache.flink.training.tzh.common.datatypes.Order;
-import org.apache.flink.training.tzh.common.sources.GoodsGenerator;
-import org.apache.flink.training.tzh.common.sources.OrderGenerator;
+import common.utils.ExerciseBase;
+import common.datatypes.Goods;
+import common.datatypes.Order;
+import common.sources.GoodsGenerator;
+import common.sources.OrderGenerator;
 import org.apache.flink.util.Collector;
 
 import java.util.concurrent.TimeUnit;
