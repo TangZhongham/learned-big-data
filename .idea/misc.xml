@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/JDBC/pom.xml" />
         <option value="$PROJECT_DIR$/HDFS/pom.xml" />
         <option value="$PROJECT_DIR$/HBase/pom.xml" />
+        <option value="$PROJECT_DIR$/Java/data-generator/pom.xml" />
       </list>
     </option>
   </component>
