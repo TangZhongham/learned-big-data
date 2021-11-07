@@ -54,3 +54,6 @@ done nothing yet... 💔
 - beautify HDFS sample code...
 - add HDFS simple code instead of thread pool and kerberos
 - add HDFS bins...
+
+
+need to beautify this README for application
