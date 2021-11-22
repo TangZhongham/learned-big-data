@@ -58,7 +58,7 @@ public class OracleJDBC {
             PreparedStatement deleteStatement = conn.prepareStatement(deleteSQL);
             PreparedStatement updateStatement = conn.prepareStatement(updateSQL);
 
-            for (int x = 0; x < 10; x++) {
+            for (int x = 0; x < 1; x++) {
                 for (int i = 0; i < 110; i++) {
                     if(i < 100) {
                         preparedStatement.setInt(1, i);
@@ -72,12 +72,14 @@ public class OracleJDBC {
                         // DELETE FROM test_tzh2 WHERE id = 2;
                         deleteStatement.setInt(1, i-5);
                         deleteStatement.execute();
+//                        i=i - 1;
                     } else {
                         // update
                         // UPDATE test_tzh2 SET name='Morty' WHERE id = 2;
                         updateStatement.setString(1, "Morty"+(String.valueOf(i-10)));
                         updateStatement.setInt(2, i-10);
                         updateStatement.execute();
+//                        i=i - 1;
                     }
                 }
             }
