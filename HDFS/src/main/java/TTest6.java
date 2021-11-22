@@ -20,6 +20,7 @@ import java.util.concurrent.Executors;
 //@Component
 
 //  -Dsun.security.krb5.debug=true
+// This is the right version。。。
 public class TTest6 {
     private static final GenericObjectPool<FileSystem> hdfsConnectionPool;
     private static MyKerberosConfig myKerberosConfig;

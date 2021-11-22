@@ -28,7 +28,7 @@ public class Utils {
         String jdbcURL = props.getProperty("jdbcURL");
         System.out.println("Server address：" + jdbcURL);
 
-        System.out.println("Start connecting with Hive");
+        System.out.println("Start connecting with " + driverName);
 
         if (props.containsKey("user") && props.containsKey("password")) {
             String user = props.getProperty("user");
