@@ -52,11 +52,12 @@ public class OracleJDBC {
 
 
     // 总记录数
-    public static int total_num = 1000;
+    public static int total_num = 30000;
+    public static boolean is_argo = true;
 
     // 1 表示开启
-    public static int delete_ = 1;
-    public static int update_ = 1;
+    public static boolean delete_ = false;
+    public static boolean update_ = false;
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
         start_time = System.currentTimeMillis();
@@ -67,7 +68,6 @@ public class OracleJDBC {
         // 测argo 要把前面 trunacte 去掉
         // 发现argo insert 慢到难以接受。 10000条 argodb 449s
 //        String database_config = "setting.properties";
-        boolean is_argo = true;
         if(is_argo) {
             database_config = "setting.properties";
         } else {
@@ -108,6 +108,7 @@ public class OracleJDBC {
 
             for (int i = 0; i < seed_list.get(0); i++) {
                 if(i < seed_list.get(1)) {
+                    long _start_time = System.currentTimeMillis();
                     preparedStatement.setInt(1, counter);
 //                        preparedStatement.setString(2, "Rick");
                     preparedStatement.setString(2, "Rick"+ counter);
@@ -115,26 +116,33 @@ public class OracleJDBC {
 //                    preparedStatement.setString(4, "Sick"+ counter);
                     System.out.println("Rick"+ counter);
                     preparedStatement.execute();
+                    insert_time = insert_time + (System.currentTimeMillis() - _start_time);
                     counter++;
-                } else if (i < seed_list.get(2) && delete_ == 1) {
+                } else if (i < seed_list.get(2) && delete_==true) {
                     // delete
                     // DELETE FROM test_tzh2 WHERE id = 2;
+                    long _start_time2 = System.currentTimeMillis();
                     deleteStatement.setInt(1,  counter-5);
                     deleteStatement.execute();
+                    delete_time = delete_time + (System.currentTimeMillis() - _start_time2);
                     System.out.println("DELETE "+"Rick"+ counter);
                     counter--;
-                } else if (update_ == 1){
+                } else if (update_==true){
                     // update
                     // UPDATE test_tzh2 SET name='Morty' WHERE id = 2;
+                    long _start_time3 = System.currentTimeMillis();
                     updateStatement.setString(1, "Morty"+(String.valueOf(counter-20)));
                     updateStatement.setInt(2, counter-20);
                     updateStatement.execute();
+                    update_time = update_time + (System.currentTimeMillis() - _start_time3);
                     System.out.println("UPDATE "+"Rick"+ (counter - 20));
                 }
             }}
 
             // ArgoDB batchinsert
             if (is_argo){
+
+                stmt.execute("set argodb.fast.update.enabled=true");
 
                 for (int i = 0; i < total_num/100; i++) {
                     long _start_time = System.currentTimeMillis();
@@ -144,17 +152,21 @@ public class OracleJDBC {
                     counter = counter + 100;
                     System.out.println("已插入 " + counter + "条");
                     for (int j = 0; j < 5 ; j++) {
-                        long _start_time2 = System.currentTimeMillis();
-                        deleteStatement.setInt(1,  counter-5-j);
-                        deleteStatement.execute();
-                        delete_time = delete_time + (System.currentTimeMillis() - _start_time2);
-                        System.out.println("DELETE "+"Rick"+ (counter-5-j));
-                        long _start_time3 = System.currentTimeMillis();
-                        updateStatement.setString(1, "Morty"+(String.valueOf(counter-20-j)));
-                        updateStatement.setInt(2, counter-20-j);
-                        updateStatement.execute();
-                        update_time = update_time + (System.currentTimeMillis() - _start_time3);
-                        System.out.println("UPDATE "+"Rick"+ (counter - 20-j));
+                        if (delete_) {
+                            long _start_time2 = System.currentTimeMillis();
+                            deleteStatement.setInt(1, counter - 5 - j);
+                            deleteStatement.execute();
+                            delete_time = delete_time + (System.currentTimeMillis() - _start_time2);
+                            System.out.println("DELETE " + "Rick" + (counter - 5 - j));
+                        }
+                        if (update_) {
+                            long _start_time3 = System.currentTimeMillis();
+                            updateStatement.setString(1, "Morty" + (String.valueOf(counter - 20 - j)));
+                            updateStatement.setInt(2, counter - 20 - j);
+                            updateStatement.execute();
+                            update_time = update_time + (System.currentTimeMillis() - _start_time3);
+                            System.out.println("UPDATE " + "Rick" + (counter - 20 - j));
+                        }
                     }
                 }
             }
