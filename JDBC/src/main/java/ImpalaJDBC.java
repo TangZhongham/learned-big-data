@@ -1,13 +1,13 @@
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+        import java.io.FileReader;
+        import java.io.IOException;
+        import java.sql.*;
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        import java.util.List;
+        import java.util.Properties;
 
-public class OracleJDBC {
+public class ImpalaJDBC {
 
     //    public static Connection conn;
     public static File file;
@@ -20,15 +20,16 @@ public class OracleJDBC {
     public static int counter = 0;
     public static int counter2 = 0;
 
-//    public static String insertSQL = "INSERT INTO LD.test_tzh2 VALUES(?,?,?,?)";
-    public static String insertSQL = "INSERT INTO LD.test_tzh2 VALUES(?,?)";
-    public static String deleteSQL = "DELETE FROM LD.test_tzh2 WHERE id = ?";
-    public static String updateSQL = "UPDATE LD.test_tzh2 SET name=? WHERE id = ?";
+    //    public static String insertSQL = "INSERT INTO LD.test_tzh2 VALUES(?,?,?,?)";
+    // kudu 必需加库名
+    public static String insertSQL = "INSERT INTO default.test_tzh2 VALUES(?,?)";
+    public static String deleteSQL = "DELETE FROM default.test_tzh2 WHERE id = ?";
+    public static String updateSQL = "UPDATE default.test_tzh2 SET name=? WHERE id = ?";
 
     public static String database_config = "";
 
     // Argo compare result
-    public static String compareSQL = "select count(*) from default.test_tzh2";
+    public static String compareSQL = "select count(*) from test_tzh2";
 
     // seed
     public static ArrayList<Integer> seed_list = new ArrayList<Integer>() {
@@ -52,12 +53,12 @@ public class OracleJDBC {
 
 
     // 总记录数
-    public static int total_num = 30000;
+    public static int total_num = 10000;
     public static boolean is_argo = false;
 
     // 1 表示开启
-    public static boolean delete_ = false;
-    public static boolean update_ = false;
+    public static boolean delete_ = true;
+    public static boolean update_ = true;
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
         start_time = System.currentTimeMillis();
@@ -98,8 +99,8 @@ public class OracleJDBC {
             stmt = conn.createStatement();
             // 1. delete old data
             if (!is_argo){
-                stmt.executeQuery("truncate table LD.test_tzh2");
-//                stmt.executeQuery("create table if not exists test_tzh2(id int, name string)");
+//                stmt.executeQuery("show tables");
+//                conn.createStatement().execute("create table if not exists test_tzh2(id int, name string,primary key(id)) stored as kudu");
             }
 
             PreparedStatement preparedStatement = conn.prepareStatement(insertSQL);
@@ -108,38 +109,41 @@ public class OracleJDBC {
 
             while (counter < total_num && !is_argo) {
 
-            for (int i = 0; i < seed_list.get(0); i++) {
-                if(i < seed_list.get(1)) {
-                    long _start_time = System.currentTimeMillis();
-                    preparedStatement.setInt(1, counter);
+                for (int i = 0; i < seed_list.get(0); i++) {
+                    if(i < seed_list.get(1)) {
+                        long _start_time = System.currentTimeMillis();
+                        conn.createStatement().execute(String.format("insert into default.test_tzh2 values(%s,'Rick')", counter));
+//                        preparedStatement.setInt(0, counter);
 //                        preparedStatement.setString(2, "Rick");
-                    preparedStatement.setString(2, "Rick"+ counter);
+//                        preparedStatement.setString(1, "Rick"+ counter);
 //                    preparedStatement.setString(3, "Buck"+ counter);
 //                    preparedStatement.setString(4, "Sick"+ counter);
-                    System.out.println("Rick"+ counter);
-                    preparedStatement.execute();
-                    insert_time = insert_time + (System.currentTimeMillis() - _start_time);
-                    counter++;
-                } else if (i < seed_list.get(2) && delete_==true) {
-                    // delete
-                    // DELETE FROM test_tzh2 WHERE id = 2;
-                    long _start_time2 = System.currentTimeMillis();
-                    deleteStatement.setInt(1,  counter-5);
-                    deleteStatement.execute();
-                    delete_time = delete_time + (System.currentTimeMillis() - _start_time2);
-                    System.out.println("DELETE "+"Rick"+ counter);
-                    counter--;
-                } else if (update_==true){
-                    // update
-                    // UPDATE test_tzh2 SET name='Morty' WHERE id = 2;
-                    long _start_time3 = System.currentTimeMillis();
-                    updateStatement.setString(1, "Morty"+(String.valueOf(counter-20)));
-                    updateStatement.setInt(2, counter-20);
-                    updateStatement.execute();
-                    update_time = update_time + (System.currentTimeMillis() - _start_time3);
-                    System.out.println("UPDATE "+"Rick"+ (counter - 20));
-                }
-            }}
+//                        preparedStatement.execute();
+                        insert_time = insert_time + (System.currentTimeMillis() - _start_time);
+                        System.out.println("Rick"+ counter);
+                        counter++;
+                    } else if (i < seed_list.get(2) && delete_==true) {
+                        // delete
+                        // DELETE FROM test_tzh2 WHERE id = 2;
+                        long _start_time2 = System.currentTimeMillis();
+                        conn.createStatement().execute(String.format("DELETE FROM default.test_tzh2 WHERE id=%s", counter-5));
+//                        deleteStatement.setInt(1,  counter-5);
+//                        deleteStatement.execute();
+                        delete_time = delete_time + (System.currentTimeMillis() - _start_time2);
+                        System.out.println("DELETE "+"Rick"+ counter);
+                        counter--;
+                    } else if (update_==true){
+                        // update
+                        // UPDATE test_tzh2 SET name='Morty' WHERE id = 2;
+                        long _start_time3 = System.currentTimeMillis();
+                        conn.createStatement().execute(String.format("UPDATE default.test_tzh2 SET name='%s' where id=%s", "Rrrr", counter-20));
+//                        updateStatement.setString(1, "Morty"+(String.valueOf(counter-20)));
+//                        updateStatement.setInt(2, counter-20);
+//                        updateStatement.execute();
+                        update_time = update_time + (System.currentTimeMillis() - _start_time3);
+                        System.out.println("UPDATE "+"Rick"+ (counter - 20));
+                    }
+                }}
 
             // ArgoDB batchinsert
             if (is_argo){
@@ -199,6 +203,7 @@ public class OracleJDBC {
         }
         catch (SQLException ex) {
             System.err.println(new java.util.Date()+" : "+ex.getMessage());
+            ex.printStackTrace();
         }
         finally {
             if (rs != null) {
@@ -215,25 +220,25 @@ public class OracleJDBC {
 
             // check result
             if (!is_argo){
-            start_count = System.currentTimeMillis();
-            Statement statement = getArgoConnection();
+                start_count = System.currentTimeMillis();
+                Statement statement = getArgoConnection();
 
-            int count = 0;
+                int count = 0;
 
-            while (count != total_num) {
-                ResultSet resultSet = statement.executeQuery(compareSQL);
-                if (resultSet.next()) {
-                    count = resultSet.getInt(1);
+                while (count != total_num) {
+                    ResultSet resultSet = statement.executeQuery(compareSQL);
+                    if (resultSet.next()) {
+                        count = resultSet.getInt(1);
+                    }
+                    if (count == total_num/2){
+                        System.out.println("消费一半耗时" + (System.currentTimeMillis()-start_count) + " ms...");
+                    }
+                    Thread.sleep(1000);
                 }
-                if (count == total_num/2){
-                    System.out.println("消费一半耗时" + (System.currentTimeMillis()-start_count) + " ms...");
-                }
-                Thread.sleep(1000);
-            }
-            System.out.println(count);
-            end_count = System.currentTimeMillis();
-            System.out.println("同步耗时" + (end_count-start_count) + " ms...");
-            statement.close();}
+                System.out.println(count);
+                end_count = System.currentTimeMillis();
+                System.out.println("同步耗时" + (end_count-start_count) + " ms...");
+                statement.close();}
         }
     }
 
@@ -281,3 +286,4 @@ public class OracleJDBC {
         return sb.toString();
     }
 }
+
