@@ -150,8 +150,10 @@ public class ImpalaJDBC {
 
                 for (int i = 0; i < total_num/100; i++) {
                     long _start_time = System.currentTimeMillis();
-                    String batch_sql = get_Batch_String("test");
-                    stmt.execute(batch_sql);
+                    conn.createStatement().execute(String.format("insert into default.test_tzh2 values(%s,'Rick')", counter));
+
+//                    String batch_sql = get_Batch_String("test");
+//                    stmt.execute(batch_sql);
                     insert_time = insert_time + (System.currentTimeMillis() - _start_time);
                     counter = counter + 100;
                     System.out.println("已插入 " + counter + "条");

@@ -56,8 +56,8 @@ public class OracleJDBC {
     public static boolean is_argo = false;
 
     // 1 表示开启
-    public static boolean delete_ = false;
-    public static boolean update_ = false;
+    public static boolean delete_ = true;
+    public static boolean update_ = true;
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
         start_time = System.currentTimeMillis();
@@ -71,8 +71,7 @@ public class OracleJDBC {
         if(is_argo) {
             database_config = "setting.properties";
         } else {
-//            database_config = "setting_oracle.properties";
-            database_config = "setting_impala.properties";
+            database_config = "setting_oracle.properties";
         }
 
 
