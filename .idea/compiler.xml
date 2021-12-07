@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="flink" />
         <module name="fasty" />
+        <module name="JavaAlgorithm" />
         <module name="kerberoslogin" />
         <module name="transwarp_jdbc" />
         <module name="SQL" />

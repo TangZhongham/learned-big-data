@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/HDFS/pom.xml" />
         <option value="$PROJECT_DIR$/HBase/pom.xml" />
         <option value="$PROJECT_DIR$/Java/data-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/Algorithms/JavaAlgorithm/pom.xml" />
       </list>
     </option>
   </component>
