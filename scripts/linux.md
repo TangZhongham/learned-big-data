@@ -105,6 +105,7 @@ find /var/lib/docker -xdev -type f -size +1G -exec du -Sh {} +
 
 ### 1.4.2. 磁盘测速
 
+$ dd if=path/to/input_file of=/path/to/output_file bs=block_size count=number_of_blocks
 
 
 ## 1.5. 网络
