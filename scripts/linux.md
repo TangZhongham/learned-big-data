@@ -53,6 +53,10 @@ sar Collect, report, or save system activity information
 – -n {keyword} :report net work statistics. keywords are DEV,TCP,UDP,IP,IP6…
 – -r :report memory utilization statistics
 – -u report CPU utilization
+
+
+# nohup
+nohup sh  crm_cust_info_test.sh  > tzh.log 2>&1 &
 ```
 
 
