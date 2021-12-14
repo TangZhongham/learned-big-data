@@ -7,3 +7,9 @@
 delete from ODSDB.BDFMHQAA
 where aa03csno not in (select * from (select max(aa74date), *
 from ODSDB.BDFMHQAA group by aa03csno having count(aa03csno) > 1) as b);
+
+-- make sure table key is unique.
+-- 901
+select count(*) from ODSDB.dimension_1;
+--901
+select count(*) from (select distinct name1 from ODSDB.dimension_1 ) ;
