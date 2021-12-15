@@ -13,3 +13,42 @@ from ODSDB.BDFMHQAA group by aa03csno having count(aa03csno) > 1) as b);
 select count(*) from ODSDB.dimension_1;
 --901
 select count(*) from (select distinct name1 from ODSDB.dimension_1 ) ;
+
+
+-- window function
+-- Some functions pretty popular in OLAP
+
+-- avg
+select
+T1.ISIDISID,
+T1.CINOCSNO,
+T1.ADSNPTSN,
+T1.ADTYADTP,
+
+avg(T1.BUDIDATE),
+avg(T1.UPDTDATE)
+
+from ODSDB.TABLE_1 T1
+GROUP BY
+T1.ISIDISID,
+T1.CINOCSNO,
+T1.ADSNPTSN,
+T1.ADTYADTP;
+
+-- rank
+select
+T1.ISIDISID,
+T1.CINOCSNO,
+T1.ADSNPTSN,
+T1.ADTYADTP,
+
+sum(T1.BUDIDATE)
+,RANK() OVER(PARTITION BY ISIDISID ORDER BY CINOCSNO) AS "rank"
+
+from ODSDB.TABLE_1 T1
+GROUP BY
+T1.ISIDISID,
+T1.CINOCSNO,
+T1.ADSNPTSN,
+T1.ADTYADTP
+;
