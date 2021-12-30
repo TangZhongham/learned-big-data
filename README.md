@@ -3,6 +3,12 @@
 > A collection of what I've learned in big data.
 
  I am a self learner and hope these materials could prove that I am a strong candicate.
+
+TODO
+
+ - [ ] Still some Flink jobs not added up
+ - [ ] Some python pandas/backend projects...
+
 ## Whole Stack
 
 | Big Data    |  Project |
