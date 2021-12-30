@@ -2,6 +2,16 @@
 
 Sqoop is an ETL tool used between RDBMS and dbs in big data area
 
+<!-- TOC -->
+
+- [sqoop](#sqoop)
+  - [how to](#how-to)
+    - [Sqoop with Oracle](#sqoop-with-oracle)
+    - [Sqoop with Mysql](#sqoop-with-mysql)
+    - [Sqoop with DB2](#sqoop-with-db2)
+
+<!-- /TOC -->
+
 ## how to
 
 ### Sqoop with Oracle

@@ -1,27 +1,141 @@
 # learned-big-data
-A collection of what I've learned
 
-## 目的
+<!-- TOC -->
 
-总结整理我这几年学习的内容，做到可以给到学校申请参考的同时，也有一定复习的作用。
+- [learned-big-data](#learned-big-data)
+  - [Whole tech stack](#whole-tech-stack)
+  - [Data Warehouse](#data-warehouse)
+    - [Sqoop](#sqoop)
+    - [SparkSQL](#sparksql)
+    - [HDFS](#hdfs)
+    - [HBase](#hbase)
+  - [Real-time Streaming](#real-time-streaming)
+    - [Flink](#flink)
+    - [Kafka](#kafka)
+  - [Algorithms](#algorithms)
+  - [Java](#java)
+  - [Python](#python)
+  - [Rust](#rust)
+  - [Linux scripts](#linux-scripts)
+  - [TODOs](#todos)
+    - [Kafka s](#kafka-s)
+    - [Flink s](#flink-s)
+    - [HDFS s](#hdfs-s)
+
+<!-- /TOC -->
+
+A collection of what I've learned in big data area.
+
+> 希望有一定的参考价值
+
+## Whole tech stack
+
+总结整理我这几年学习的内容
 
 每天更新！！！
 
--[ ] Kafka 脚本、安全、demo
+- [x] Kafka 脚本、安全、demo
 
--[ ] Flink 脚本、demo
+- [x] Flink 脚本、demo
 
--[ ] HDFS、HBase
+- [x] HDFS、HBase
 
--[ ] SQL
+- [x] SQL
 
--[ ] 算法
+- [ ] 算法
 
--[ ] python
+- [ ] python
 
 -[x] sqoop
 
 
+
+| Big Data    |  Project |
+| ----------- | ----------- |
+| [Data warehouse(Java)](#data-warehouse) | ✅Sqoop / SparkSQL / HDFS API / HBase API / JDBC |
+| [Real-time Streaming](#real-time-streaming) | ✅Flink / Kafka |
+| [Algorithms](#algorithms) | ✅ Java |
+| [Java](#java) | ✅ Multi-thread data generator |
+| [Python](#python) | ✅ data faker |
+| [Rust](#rust) | ✅ command line stock watcher |
+| [Linux scripts](#linux-scripts) | scripts|
+
+
+asdasdas
+asdasdas
+asdasdas
+asdasdas
+
+asdasdasasdasdas
+
+asdasdas
+asdasdas
+asdasdas
+asdasdas
+asdasdas
+asdasdas
+asdasdas
+
+asdasdas
+
+asdasdas
+asdasdas
+
+asdasdas
+asdasdas
+
+asdasdas
+
+asdasdas
+
+asdasdas
+asdasdas
+asdasdas
+
+
+asdasdas
+asdasdas
+
+asdasdas
+
+asdasdas
+
+## Data Warehouse
+
+> This is what I've learned to build up a data warehouse.
+
+| Data Warehouse Projects    |  Detail |
+| ----------- | ----------- |
+| [Sqoop](./sqoop/sqoop.md) | several ETL scripts I wrote from RDBMS to Spark on Hive | 
+| [SparkSQL](./SQL/src/main/java/useful.sql) | useful SparkSQLs I wrote |
+| [HDFS Operations](./HDFS/src/main/java/HDFSOperation.java) | HDFS operation api in Java |
+| [HDFS Kerberos Login](./HDFS/src/main/java/Main.java) ｜ HDFS Kerberos Multi-thread Login method ｜
+
+### Sqoop
+### SparkSQL
+
+### HDFS
+### HBase
+
+## Real-time Streaming
+
+### Flink
+
+| Big Data    |  Project ｜
+| ----------- | ----------- |
+| [Flink streaming](./flink/README.md) | [Kakfa Filter Streaming](./flink/src/main/java/KafkaFilter.java) ｜
+
+### Kafka
+
+## Algorithms
+
+## Java
+
+## Python
+
+## Rust
+
+## Linux scripts
 
 ## TODOs
 
@@ -36,11 +150,11 @@ https://github.com/TurboWay/bigdata_analyse
 
 
 
-### Kafka
+### Kafka s
 
 - add java code 
 
-### Flink
+### Flink s
 
 done nothing yet... 💔 
 
@@ -49,7 +163,7 @@ done nothing yet... 💔
 - CDC testing...
 - Kafka with Kerberos example
 
-### HDFS
+### HDFS s
 
 - beautify HDFS sample code...
 - add HDFS simple code instead of thread pool and kerberos
