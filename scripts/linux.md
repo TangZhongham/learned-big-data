@@ -57,6 +57,9 @@ sar Collect, report, or save system activity information
 
 # nohup
 nohup sh  crm_cust_info_test.sh  > tzh.log 2>&1 &
+
+// show how big file is in current dir
+du -sh *
 ```
 
 
