@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/HBase/pom.xml" />
         <option value="$PROJECT_DIR$/Java/data-generator/pom.xml" />
         <option value="$PROJECT_DIR$/Algorithms/JavaAlgorithm/pom.xml" />
+        <option value="$PROJECT_DIR$/Flink-Production/FlinkPrc/pom.xml" />
       </list>
     </option>
   </component>
