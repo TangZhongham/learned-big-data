@@ -1,5 +1,9 @@
 package examples;
 
+import org.apache.flink.api.common.eventtime.WatermarkStrategy;
+import org.apache.flink.api.common.serialization.SimpleStringSchema;
+import org.apache.flink.connector.kafka.source.KafkaSource;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import utils.WordCountData;
@@ -21,6 +25,16 @@ public class WordCount {
 
         // set up the execution environment
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        KafkaSource<String> source = KafkaSource.<String>builder()
+                .setBootstrapServers("brokers")
+                .setTopics("input-topic")
+                .setGroupId("my-group")
+                .setStartingOffsets(OffsetsInitializer.earliest())
+                .setValueOnlyDeserializer(new SimpleStringSchema())
+                .build();
+
+        env.fromSource(source, WatermarkStrategy.noWatermarks(), "Kafka Source");
 
         // make parameters available in the web interface
 //        env.getConfig().setGlobalJobParameters(params);
