@@ -28,7 +28,9 @@ TODO
 | Data Warehouse Projects    |  Detail |
 | ----------- | ----------- |
 | [Sqoop](./sqoop/sqoop.md) | Several ETL scripts I wrote from RDBMS to Spark on Hive | 
+| [Elastic Search](./ElasticSearch/Es+esrally.md) | Es + Esrally benchmark test| 
 | [SparkSQL](./SQL/src/main/java/useful.sql) | Useful SparkSQLs I wrote |
+| [Apache Kylin](./Apache%20Kylin/Kylin4.0-intro.md) | Use Apache Kylin to accelerate queries|
 | [HDFS Operations](./HDFS/src/main/java/boot.java) | HDFS operation api in Java |
 | [HDFS Kerberos Login](./HDFS/src/main/java/Main.java) | HDFS Kerberos Multi-thread Login method |
 | [HBase API with Kerberos](./HBase/src/main/java/HBaseSecureTest.java) | HBase API with Kerberos Login |
