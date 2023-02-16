@@ -8,10 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="flink" />
-        <module name="fasty" />
         <module name="JavaAlgorithm" />
         <module name="FlinkPrc" />
         <module name="kerberoslogin" />
+        <module name="fasty" />
         <module name="transwarp_jdbc" />
         <module name="SQL" />
         <module name="hyperbase-demo" />

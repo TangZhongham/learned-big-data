@@ -14,6 +14,12 @@ public class JDBCExample {
 
 
     public static void main(String[] args) throws SQLException, IOException {
+//        ./JDBC/conf/setting.properties
+//        jdbc_driver=org.apache.hive.jdbc.HiveDriver
+//        jdbcURL=jdbc:hive2://172.26.4.13:10000/default
+//        user=hive
+//        password=123456
+//        query=select * from orctzh;
 
         if (args.length > 0) {
             file = new File(args[0]);

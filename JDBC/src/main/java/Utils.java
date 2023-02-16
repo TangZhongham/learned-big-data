@@ -47,8 +47,6 @@ public class Utils {
     }
 
     public static List<Integer> getSeed(int a, int b, int c) {
-        // 这个方案有点问题，关键在于插入和update/delete 必需分开。如果batch 比较小可以试试。
-        // 获取 100 里面 多少次 insert / update
         List<Integer> SeedList = new ArrayList<>();
         for (int i = 0; i < b+c; i++) {
             int Random_num = new Random().nextInt(a);
